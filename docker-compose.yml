@@ -1,0 +1,14 @@
+version: "3.7"
+networks:
+    symfony:
+      external: true
+
+services:
+  nginx:
+    build: .
+    ports:
+        - "1080:80"
+    networks:
+        - symfony
+    environment:
+      REACT_APP_URL: ${REACT_APP_URL:-base}
